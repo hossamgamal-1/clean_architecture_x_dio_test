@@ -6,5 +6,5 @@ class GetPostUseCase {
 
   GetPostUseCase(this.getPostBaseRepo);
 
-  Future<PostModel> call(int id) => getPostBaseRepo.getPost(id);
+  Future<PostModel> call(int id) => getPostBaseRepo.getPostById(id);
 }

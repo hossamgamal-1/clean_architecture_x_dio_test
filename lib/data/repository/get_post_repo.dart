@@ -9,5 +9,5 @@ class GetPostRepo implements GetPostBaseRepo {
   GetPostRepo(this.baseRemoteDataSource);
 
   @override
-  Future<PostModel> getPost(int id) => baseRemoteDataSource.getPost(id);
+  Future<PostModel> getPostById(int id) => baseRemoteDataSource.getPostById(id);
 }
