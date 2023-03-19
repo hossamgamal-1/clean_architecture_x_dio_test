@@ -11,7 +11,7 @@ class AppPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: FutureBuilder<PostModel>(
-        future: GetPostUseCase(sL())(4),
+        future: GetPostByIdUseCase(sL())(4),
         builder: (context, snapshot) {
           return snapshot.hasError
               ? const Center(child: Text('error'))
