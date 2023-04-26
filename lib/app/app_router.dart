@@ -1,6 +1,7 @@
-import 'package:clean_architecture_test/presentation/screens/app_page.dart';
-import 'package:clean_architecture_test/presentation/screens/initial_page.dart';
 import 'package:flutter/material.dart';
+
+import '../presentation/screens/app_page.dart';
+import '../presentation/screens/initial_page.dart';
 
 class RouteNames {
   static const String initialPageRoute = '/';

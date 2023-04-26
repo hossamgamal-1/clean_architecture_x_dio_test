@@ -1,15 +1,30 @@
-import 'package:clean_architecture_test/core/app_constants.dart';
-import 'package:clean_architecture_test/data/model/post_model.dart';
+import 'package:clean_architecture_test/app/app_constants.dart';
 import 'package:dio/dio.dart';
+import 'package:retrofit/retrofit.dart';
 
-abstract class BaseRemoteDataSource {
-  Future<PostModel> getPostById(int id);
+import '../../model/post.dart';
+
+part 'remote_data_source.g.dart';
+
+@RestApi(baseUrl: AppConstants.baseUrl)
+abstract class WebServices {
+  factory WebServices(Dio dio, {String baseUrl}) = _WebServices;
+
+  @GET('{id}')
+  Future<Post> getPostById(@Path() int id);
 }
 
-class RemoteDataSource implements BaseRemoteDataSource {
-  @override
-  Future<PostModel> getPostById(int id) async {
-    final response = await Dio().get('${AppConstants.baseUrl}/$id');
-    return PostModel.fromJson(response.data);
-  }
+Dio initDio() {
+  BaseOptions baseOptions = BaseOptions(
+    baseUrl: AppConstants.baseUrl,
+    connectTimeout: const Duration(seconds: 10),
+  );
+  Dio dio = Dio(baseOptions);
+  dio.interceptors.add(LogInterceptor(
+    request: true,
+    requestBody: true,
+    responseBody: true,
+    error: true,
+  ));
+  return dio;
 }

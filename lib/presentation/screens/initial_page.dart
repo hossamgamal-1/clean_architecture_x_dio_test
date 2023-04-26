@@ -1,7 +1,8 @@
-import 'package:clean_architecture_test/app/app_router.dart';
 import 'package:flutter/material.dart';
 
+import '../../app/app_router.dart';
 import '../resources/string_manager.dart';
+import 'components/custom_app_bar.dart';
 
 class InitialPage extends StatelessWidget {
   const InitialPage({super.key});
@@ -9,6 +10,10 @@ class InitialPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const PreferredSize(
+        preferredSize: Size.fromHeight(0),
+        child: CustomAppBar(),
+      ),
       body: SafeArea(
         child: Center(
           child: ElevatedButton(

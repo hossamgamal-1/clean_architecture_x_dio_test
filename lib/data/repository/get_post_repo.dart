@@ -1,13 +1,12 @@
-import 'package:clean_architecture_test/domain/repository/get_post_base_repo.dart';
-
 import '../data_source/remote_data_source/remote_data_source.dart';
-import '../model/post_model.dart';
+import '../model/post.dart';
 
-class GetPostRepo implements GetPostBaseRepo {
-  final BaseRemoteDataSource baseRemoteDataSource;
+class WebServicesRepo implements WebServices {
+  final WebServices webServices;
 
-  GetPostRepo(this.baseRemoteDataSource);
-
+  WebServicesRepo(this.webServices);
   @override
-  Future<PostModel> getPostById(int id) => baseRemoteDataSource.getPostById(id);
+  Future<Post> getPostById(int id) async {
+    return await webServices.getPostById(id);
+  }
 }

@@ -1,5 +1,6 @@
-import 'package:clean_architecture_test/app/app_router.dart';
 import 'package:flutter/material.dart';
+
+import 'app_router.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp._internal();

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'app/app.dart';
-import 'core/injection.dart';
+import 'app/injection.dart';
 
 void main() {
   getInit();
